@@ -12,9 +12,54 @@ class Node {
 }
 
 class Tree { //tree is an array that will contain node objects
-    constructor(arrayOfData) {
-        this.root = arrayOfData[0];
+    constructor() {
+        this.root = null;
+        // this.root = arrayOfData[0];
         console.log('this.root = ' + this.root);
+    }
+    
+    insertValue = (value) => {
+        console.log('in insert function');
+    }
+    
+    deleteValue = (value) => {
+        console.log('in delete function');
+    }
+    
+    find = (value) => {
+        console.log('in find function');
+    }
+    
+    levelOrder = (functionParameter) => {
+        console.log('in levelOrder');
+    }
+    
+    inorder = (functionParameter) => {
+        console.log('in inorder');
+    }
+    
+    preorder = (functionParameter) => {
+        console.log('in preorder');
+    }
+    
+    postorder = (functionParameter) => {
+        console.log('in postorder');
+    }
+    
+    height = (functionParameter) => {
+        console.log('in height');
+    }
+    
+    depth = (functionParameter) => {
+        console.log('in depth');
+    }
+    
+    isBalanced = (functionParameter) => {
+        console.log('in isBalanced');
+    }
+    
+    rebalance = (functionParameter) => {
+        console.log('in rebalance');
     }
 }
 
@@ -33,51 +78,10 @@ const buildTree = (arrayOfData) => {
 
     //sort
     //remove duplicates
+    //populate tree with balanced binary tree of node objects
+    //return level-0 root node
 }
 
-const insertValue = (value) => {
-    console.log('in insert function');
-}
-
-const deleteValue = (value) => {
-    console.log('in delete function');
-}
-
-const find = (value) => {
-    console.log('in find function');
-}
-
-const levelOrder = (functionParameter) => {
-    console.log('in levelOrder');
-}
-
-const inorder = (functionParameter) => {
-    console.log('in inorder');
-}
-
-const preorder = (functionParameter) => {
-    console.log('in preorder');
-}
-
-const postorder = (functionParameter) => {
-    console.log('in postorder');
-}
-
-const height = (functionParameter) => {
-    console.log('in height');
-}
-
-const depth = (functionParameter) => {
-    console.log('in depth');
-}
-
-const isBalanced = (functionParameter) => {
-    console.log('in isBalanced');
-}
-
-const rebalance = (functionParameter) => {
-    console.log('in rebalance');
-}
 
 const ready = () => {
     console.log('DOM loaded and parsed');
