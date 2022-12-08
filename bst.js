@@ -5,7 +5,7 @@ const arrayOfData = [10, 7, 4, 23, 8, 9,
 
 class Node {
     constructor(data) {
-        this.data = data;
+        this.value = null;
         this.leftChild = null;
         this.rightChild = null;
     }
@@ -13,19 +13,37 @@ class Node {
 
 class Tree { //tree is an array that will contain node objects
     constructor(arrayOfData) {
-        this.root = arrayOfData[0];
-        console.log('this.root = ' + this.root);
+        this.root = null;
+        // console.log('this.root = ' + this.root);
     }
+
+    insertValue = (value) => {
+        console.log('in insert function');
+        //compare value to root node value
+    };
 }
 
 const buildTree = (arrayOfData) => {
     console.log('in buildTree');
     const mySeachTree = new Tree(arrayOfData);
     console.log(mySeachTree);
-    for (let i = 1; i < arrayOfData.length; i++) {
+    //loop through arrayOfData
+    //create new node for each array item
+    for (let i = 0; i < arrayOfData.length; i++) {
         console.log(arrayOfData[i]);
         let newNode = new Node(arrayOfData[i]);
         console.log(newNode);
+        if (mySeachTree.root === null) {
+            //if item is first to be added to empty tree make this root node 
+            console.log('Tree is empty. Creating root node')
+            mySeachTree.root = newNode;
+            console.log('root node =')
+            console.log(mySeachTree.root)
+        } else {
+        insertValue(newNode);
+        
+        };
+
 
 
     }
@@ -35,9 +53,6 @@ const buildTree = (arrayOfData) => {
     //remove duplicates
 }
 
-const insertValue = (value) => {
-    console.log('in insert function');
-}
 
 const deleteValue = (value) => {
     console.log('in delete function');
