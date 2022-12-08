@@ -5,72 +5,45 @@ const arrayOfData = [10, 7, 4, 23, 8, 9,
 
 class Node {
     constructor(data) {
-        this.data = data;
+        this.value = null;
         this.leftChild = null;
         this.rightChild = null;
     }
 }
 
 class Tree { //tree is an array that will contain node objects
-    constructor() {
+    constructor(arrayOfData) {
         this.root = null;
-        // this.root = arrayOfData[0];
-        console.log('this.root = ' + this.root);
+        // console.log('this.root = ' + this.root);
     }
-    
+
     insertValue = (value) => {
         console.log('in insert function');
-    }
-    
-    deleteValue = (value) => {
-        console.log('in delete function');
-    }
-    
-    find = (value) => {
-        console.log('in find function');
-    }
-    
-    levelOrder = (functionParameter) => {
-        console.log('in levelOrder');
-    }
-    
-    inorder = (functionParameter) => {
-        console.log('in inorder');
-    }
-    
-    preorder = (functionParameter) => {
-        console.log('in preorder');
-    }
-    
-    postorder = (functionParameter) => {
-        console.log('in postorder');
-    }
-    
-    height = (functionParameter) => {
-        console.log('in height');
-    }
-    
-    depth = (functionParameter) => {
-        console.log('in depth');
-    }
-    
-    isBalanced = (functionParameter) => {
-        console.log('in isBalanced');
-    }
-    
-    rebalance = (functionParameter) => {
-        console.log('in rebalance');
-    }
+        //compare value to root node value
+    };
 }
 
 const buildTree = (arrayOfData) => {
     console.log('in buildTree');
     const mySeachTree = new Tree(arrayOfData);
     console.log(mySeachTree);
-    for (let i = 1; i < arrayOfData.length; i++) {
+    //loop through arrayOfData
+    //create new node for each array item
+    for (let i = 0; i < arrayOfData.length; i++) {
         console.log(arrayOfData[i]);
         let newNode = new Node(arrayOfData[i]);
         console.log(newNode);
+        if (mySeachTree.root === null) {
+            //if item is first to be added to empty tree make this root node 
+            console.log('Tree is empty. Creating root node')
+            mySeachTree.root = newNode;
+            console.log('root node =')
+            console.log(mySeachTree.root)
+        } else {
+        insertValue(newNode);
+        
+        };
+
 
 
     }
@@ -78,8 +51,43 @@ const buildTree = (arrayOfData) => {
 
     //sort
     //remove duplicates
-    //populate tree with balanced binary tree of node objects
-    //return level-0 root node
+}
+
+
+const deleteValue = (value) => {
+    console.log('in delete function');
+}
+
+const find = (value) => {
+    console.log('in find function');
+}
+
+const levelOrder = (functionParameter) => {
+    console.log('in levelOrder');
+}
+
+const inorder = (functionParameter) => {
+    console.log('in inorder');
+}
+
+const preorder = (functionParameter) => {
+    console.log('in preorder');
+}
+
+const postorder = (functionParameter) => {
+    console.log('in postorder');
+}
+
+const height = (functionParameter) => {
+    console.log('in height');
+}
+
+const depth = (functionParameter) => {
+    console.log('in depth');
+}
+
+const isBalanced = (functionParameter) => {
+    console.log('in isBalanced');
 }
 
 
