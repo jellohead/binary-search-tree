@@ -4,50 +4,74 @@ const arrayOfData = [10, 7, 4, 23, 8, 9,
     4, 3, 5, 7, 9, 67, 6345, 324]
 
 class Node {
-    constructor(data) {
-        this.value = null;
+    constructor(value) {
+        this.value = value;
         this.leftChild = null;
         this.rightChild = null;
     }
 }
 
 class Tree { //tree is an array that will contain node objects
-    constructor(arrayOfData) {
-        this.root = null;
+    constructor(value) {
+        this.root = new Node(value)
+        this.counter = 0
         // console.log('this.root = ' + this.root);
     }
 
-    insertValue = (value) => {
+    insertValue(value) {
         console.log('in insert function');
-        //compare value to root node value
-    };
+        this.count++
+        let newNode = new Node(value)
+        const mySearchTree = node => {
+            if (value < node.value) {
+                if (!node.leftChild) {
+                    node.leftChild = newNode
+                } else {
+                    mySearchTree(node.leftChild)
+                }
+            } else {
+                mySearchTree(node.leftChild)
+            }
+            if (value > node.value) {
+                if (!node.rightChild) {
+                    node.rightChild = newNode
+                } else {
+                    mySearchTree(node.rightChild)
+                }
+            } else {
+                mySearchTree(node.rightChild)
+            }
+
+
+            //compare value to root node value
+        };
+    }
 }
+
 
 const buildTree = (arrayOfData) => {
     console.log('in buildTree');
-    const mySeachTree = new Tree(arrayOfData);
-    console.log(mySeachTree);
-    //loop through arrayOfData
+    const mySearchTree = new Tree();
     //create new node for each array item
     for (let i = 0; i < arrayOfData.length; i++) {
         console.log(arrayOfData[i]);
-        let newNode = new Node(arrayOfData[i]);
-        console.log(newNode);
-        if (mySeachTree.root === null) {
+        let newNode = new Node(arrayOfData[i],);
+        // console.log('newNode = ');
+        // console.dir(newNode);
+        if (mySearchTree.root === null) {
             //if item is first to be added to empty tree make this root node 
             console.log('Tree is empty. Creating root node')
-            mySeachTree.root = newNode;
+            mySearchTree.root = newNode;
             console.log('root node =')
-            console.log(mySeachTree.root)
+            console.log(mySearchTree.root)
         } else {
-        insertValue(newNode);
-        
+            mySearchTree.insertValue(newNode);
+
         };
 
 
-
     }
-    return mySeachTree;
+    return mySearchTree;
 
     //sort
     //remove duplicates
@@ -100,6 +124,3 @@ const ready = () => {
 
 window.addEventListener("DOMContentLoaded", ready);
 
-// onDOMContentLoaded = (event) => {
-    
-// }
