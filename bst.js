@@ -19,9 +19,11 @@ class Tree { //tree is an array that will contain node objects
     }
 
     insertValue(value) {
-        console.log('in insert function');
-        this.count++
+        console.log('in insertValue = ' + value);
+        this.counter++
+        console.log('this.counter = ' + this.counter)
         let newNode = new Node(value)
+        // need to account for empty tree
         const mySearchTree = node => {
             if (value < node.value) {
                 if (!node.leftChild) {
@@ -49,27 +51,13 @@ class Tree { //tree is an array that will contain node objects
 }
 
 
-const buildTree = (arrayOfData) => {
+const buildTree = arrayOfData => {
     console.log('in buildTree');
     const mySearchTree = new Tree();
     //create new node for each array item
     for (let i = 0; i < arrayOfData.length; i++) {
         console.log(arrayOfData[i]);
-        let newNode = new Node(arrayOfData[i],);
-        // console.log('newNode = ');
-        // console.dir(newNode);
-        if (mySearchTree.root === null) {
-            //if item is first to be added to empty tree make this root node 
-            console.log('Tree is empty. Creating root node')
-            mySearchTree.root = newNode;
-            console.log('root node =')
-            console.log(mySearchTree.root)
-        } else {
-            mySearchTree.insertValue(newNode);
-
-        };
-
-
+        mySearchTree.insertValue(arrayOfData[i]);
     }
     return mySearchTree;
 
