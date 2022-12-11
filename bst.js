@@ -3,6 +3,8 @@
 const arrayOfData = [10, 7, 4, 23, 8, 9,
     4, 3, 5, 7, 9, 67, 6345, 324]
 
+const value = 10
+
 class Node {
     constructor(value) {
         this.value = value;
@@ -14,49 +16,92 @@ class Node {
 class Tree { //tree is an array that will contain node objects
     constructor(value) {
         this.root = new Node(value)
+        // this.root = null
         this.counter = 0
-        // console.log('this.root = ' + this.root);
+        console.log('this.root = ')
+        console.log(this.root);
     }
 
-    insertValue(value) {
-        console.log('in insertValue = ' + value);
+    insertValue = value => {
+        console.log('in insertValue w/ element = ' + value);
         this.counter++
         console.log('this.counter = ' + this.counter)
         let newNode = new Node(value)
+        console.log('newNode =')
+        console.log(newNode)
         // need to account for empty tree
-        const mySearchTree = node => {
-            if (value < node.value) {
-                if (!node.leftChild) {
-                    node.leftChild = newNode
+        const mySearchTree = newNode => {
+            console.log('newNode.value = ' + newNode.value)
+            if (value < newNode.value) {
+                if (!newNode.leftChild) {
+                    newNode.leftChild = newNode
                 } else {
-                    mySearchTree(node.leftChild)
+                    mySearchTree(newNode.leftChild)
                 }
             } else {
-                mySearchTree(node.leftChild)
+                mySearchTree(newNode.leftChild)
             }
-            if (value > node.value) {
-                if (!node.rightChild) {
-                    node.rightChild = newNode
+            if (value > newNode.value) {
+                if (!newNode.rightChild) {
+                    newNode.rightChild = newNode
                 } else {
-                    mySearchTree(node.rightChild)
+                    mySearchTree(newNode.rightChild)
                 }
             } else {
-                mySearchTree(node.rightChild)
+                mySearchTree(newNode.rightChild)
             }
+            console.log('skipped everything in mySearchTree')
 
 
             //compare value to root node value
         };
     }
+    deleteValue = (value) => {
+        console.log('in delete function');
+    }
+
+    find = (value) => {
+        console.log('in find function');
+    }
+
+    levelOrder = (functionParameter) => {
+        console.log('in levelOrder');
+    }
+
+    inorder = (functionParameter) => {
+        console.log('in inorder');
+    }
+
+    preorder = (functionParameter) => {
+        console.log('in preorder');
+    }
+
+    postorder = (functionParameter) => {
+        console.log('in postorder');
+    }
+
+    height = (functionParameter) => {
+        console.log('in height');
+    }
+
+    depth = (functionParameter) => {
+        console.log('in depth');
+    }
+
+    isBalanced = (functionParameter) => {
+        console.log('in isBalanced');
+    }
 }
 
-
-const buildTree = arrayOfData => {
+const buildTree = value => {
+    // console.log(arrayOfData)
     console.log('in buildTree');
-    const mySearchTree = new Tree();
+    let i = 0;
+    const mySearchTree = new Tree(arrayOfData[i]);
     //create new node for each array item
-    for (let i = 0; i < arrayOfData.length; i++) {
-        console.log(arrayOfData[i]);
+    for (i = 1; i < arrayOfData.length; i++) {
+        console.log('array element = ' + arrayOfData[i]);
+        console.log(mySearchTree)
         mySearchTree.insertValue(arrayOfData[i]);
     }
     return mySearchTree;
@@ -65,47 +110,9 @@ const buildTree = arrayOfData => {
     //remove duplicates
 }
 
-
-const deleteValue = (value) => {
-    console.log('in delete function');
-}
-
-const find = (value) => {
-    console.log('in find function');
-}
-
-const levelOrder = (functionParameter) => {
-    console.log('in levelOrder');
-}
-
-const inorder = (functionParameter) => {
-    console.log('in inorder');
-}
-
-const preorder = (functionParameter) => {
-    console.log('in preorder');
-}
-
-const postorder = (functionParameter) => {
-    console.log('in postorder');
-}
-
-const height = (functionParameter) => {
-    console.log('in height');
-}
-
-const depth = (functionParameter) => {
-    console.log('in depth');
-}
-
-const isBalanced = (functionParameter) => {
-    console.log('in isBalanced');
-}
-
-
 const ready = () => {
     console.log('DOM loaded and parsed');
-    const returnedTree = buildTree(arrayOfData);
+    const returnedTree = buildTree(value);
     console.log('returnedTree is')
     console.dir(returnedTree);
 }
