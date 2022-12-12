@@ -3,8 +3,6 @@
 const arrayOfData = [10, 7, 4, 23, 8, 9,
     4, 3, 5, 7, 9, 67, 6345, 324]
 
-const value = 10
-
 class Node {
     constructor(value) {
         this.value = value;
@@ -17,44 +15,32 @@ class Tree { //tree is an array that will contain node objects
     constructor(value) {
         this.root = new Node(value)
         // this.root = null
-        this.counter = 0
-        console.log('this.root = ')
-        console.log(this.root);
+        this.count = 1
+        // console.log('this.root = ')
+        // console.log(this.root);
     }
 
     insertValue = value => {
         console.log('in insertValue w/ element = ' + value);
-        this.counter++
-        console.log('this.counter = ' + this.counter)
+        this.count++
         let newNode = new Node(value)
-        console.log('newNode =')
-        console.log(newNode)
-        // need to account for empty tree
-        const mySearchTree = newNode => {
-            console.log('newNode.value = ' + newNode.value)
-            if (value < newNode.value) {
-                if (!newNode.leftChild) {
-                    newNode.leftChild = newNode
+        const searchTree = node => {
+            if (value < node.value) {
+                if (!node.leftChild) {
+                    node.leftChild = newNode
                 } else {
-                    mySearchTree(newNode.leftChild)
+                    searchTree(node.leftChild)
                 }
-            } else {
-                mySearchTree(newNode.leftChild)
             }
-            if (value > newNode.value) {
-                if (!newNode.rightChild) {
-                    newNode.rightChild = newNode
+            else if (value > node.value) {
+                if (!node.rightChild) {
+                    node.rightChild = newNode
                 } else {
-                    mySearchTree(newNode.rightChild)
+                    searchTree(node.rightChild)
                 }
-            } else {
-                mySearchTree(newNode.rightChild)
             }
-            console.log('skipped everything in mySearchTree')
-
-
-            //compare value to root node value
         };
+        searchTree(this.root)
     }
     deleteValue = (value) => {
         console.log('in delete function');
@@ -62,6 +48,11 @@ class Tree { //tree is an array that will contain node objects
 
     find = (value) => {
         console.log('in find function');
+        if (value === this.root.value) {
+            return true;
+        } else if (value < this.root.value) {
+
+        }
     }
 
     levelOrder = (functionParameter) => {
@@ -93,29 +84,35 @@ class Tree { //tree is an array that will contain node objects
     }
 }
 
-const buildTree = value => {
-    // console.log(arrayOfData)
-    console.log('in buildTree');
+const buildTree = dataSet => {
+    console.log('in buildTree')
     let i = 0;
-    const mySearchTree = new Tree(arrayOfData[i]);
-    //create new node for each array item
-    for (i = 1; i < arrayOfData.length; i++) {
-        console.log('array element = ' + arrayOfData[i]);
-        console.log(mySearchTree)
-        mySearchTree.insertValue(arrayOfData[i]);
+    const bst = new Tree(dataSet[i])
+    // console.log('bst is ')
+    // console.log(bst)
+    for (i = 1; i < dataSet.length; i++) {
+        bst.insertValue(dataSet[i])
     }
-    return mySearchTree;
-
-    //sort
-    //remove duplicates
+    return bst
 }
 
 const ready = () => {
     console.log('DOM loaded and parsed');
-    const returnedTree = buildTree(value);
+    const returnedTree = buildTree(arrayOfData);
     console.log('returnedTree is')
     console.dir(returnedTree);
+    let searchResult = returnedTree.find(7)
+    console.log(searchResult)
 }
 
 window.addEventListener("DOMContentLoaded", ready);
+
+// const arrayOfData = [10, 7, 4, 23, 8, 9,
+//     4, 3, 5, 7, 9, 67, 6345, 324]
+
+// const bst = new Tree(10)
+
+// bst.insertValue(7)
+// bst.insertValue(4)
+// bst.insertValue(23)
 
