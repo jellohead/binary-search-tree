@@ -21,7 +21,7 @@ class Tree { //tree is an array that will contain node objects
     }
 
     insertValue = value => {
-        console.log('in insertValue w/ element = ' + value);
+        // console.log('in insertValue w/ element = ' + value);
         this.count++
         let newNode = new Node(value)
         const searchTree = node => {
@@ -42,17 +42,47 @@ class Tree { //tree is an array that will contain node objects
         };
         searchTree(this.root)
     }
+
     deleteValue = (value) => {
         console.log('in delete function');
     }
 
-    find = (value) => {
-        console.log('in find function');
-        if (value === this.root.value) {
-            return true;
-        } else if (value < this.root.value) {
+    find = value => {
+        let result
+        console.log('in find function with value = ' + value);
+        const searchTree = node => {
+            console.log('current node is')
+            console.log(node)
+            if (value === node.value) {
+                console.log('Found the node with ' + value)
+                console.log(node)
+                result = node
+                // return node;
 
-        }
+            } else if (value < node.value) {
+                console.log('in value < node.value')
+                if (!node.leftChild) {
+                    console.log('in !node.leftChild')
+                    node.leftChild = node
+                    return node
+                } else {
+                    console.log('recursive through node.leftChild')
+                    searchTree(node.leftChild)
+                }
+            } else if (value > node.value) {
+                console.log('in value > node.value')
+                if (!node.rightChild) {
+                    node.rightChild = node
+                } else {
+                    searchTree(node.rightChild)
+                }
+            }
+            // result = 'no match found'
+            return result
+        };
+
+        searchTree(this.root)
+        return result
     }
 
     levelOrder = (functionParameter) => {
@@ -88,8 +118,6 @@ const buildTree = dataSet => {
     console.log('in buildTree')
     let i = 0;
     const bst = new Tree(dataSet[i])
-    // console.log('bst is ')
-    // console.log(bst)
     for (i = 1; i < dataSet.length; i++) {
         bst.insertValue(dataSet[i])
     }
@@ -100,9 +128,9 @@ const ready = () => {
     console.log('DOM loaded and parsed');
     const returnedTree = buildTree(arrayOfData);
     console.log('returnedTree is')
-    console.dir(returnedTree);
-    let searchResult = returnedTree.find(7)
-    console.log(searchResult)
+    const searchResult = returnedTree.find(4)
+    console.dir(searchResult)
+    console.log('back from find function')
 }
 
 window.addEventListener("DOMContentLoaded", ready);
